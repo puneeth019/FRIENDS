@@ -2,7 +2,7 @@
 library(rvest)    # Load `rvest` package
 library(stringr)  # Load `stringr` package
 
-WorkDir <- "~/Documents/DA/Projects/friends/"
+WorkDir <- "~/DA/Projects/friends/"
 setwd(dir = WorkDir)
 
 season_num <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10")
@@ -37,21 +37,21 @@ Lead_Characters <- all_Characters[all_Characters %in% c("Chandler", "Joey",
 if(sum(!is.na(x = Lead_Characters)) != 0) {
 png(paste0(WorkDir,"plots/episode", i, "frequency_plot.png"))
 barplot(height=table(Lead_Characters), xlab = "Lead Characters",
-        ylab = "# Dialogues in the episode",
+        ylab = paste0("Number of Dialogues"),
         col = c("lightblue", "mistyrose", "lightcyan", "lavender"),
-        main = "# Dialogue of Lead characters in F.R.I.E.N.D.S TV series (1994-2004)")
+        main = "# Dialogues in F.R.I.E.N.D.S TV series (1994-2004)",
+        sub = paste0("Episode",i), font.sub = 3)
 dev.off()
-} else paste0("fail for", i)
+} else warning("fail for episode", i)
 
 Lead_Characters_allep <- c(Lead_Characters_allep, Lead_Characters)
 
 }
 
 png(paste0(WorkDir,"plots/allep_frequency_plot.png"))
-  barplot(height=table(Lead_Characters_allep), 
-          xlab = "Lead Characters",
-          ylab = "# Dialogues in the series",
-          col = c("lightblue", "mistyrose", "lightcyan", "lavender"),
-          main = "# Dialogue of Lead characters in F.R.I.E.N.D.S TV series (1994-2004)"
-          )
+barplot(height=table(Lead_Characters_allep), xlab = "Lead Characters",
+        ylab = "Number of Dialogues",
+        col = c("lightblue", "mistyrose", "lightcyan", "lavender"),
+        main = "# Dialogues in F.R.I.E.N.D.S TV series (1994-2004)",
+        sub = paste0("Complete Series"), font.sub = 3)
 dev.off()

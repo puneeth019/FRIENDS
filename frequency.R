@@ -13,11 +13,13 @@ all_episodes <- mapply(FUN = function(x,y) paste0(x,y), x = files_path, y=files_
 all_episodes <- unlist(x = all_episodes, use.names = F)
 num_episodes <- length(all_episodes)
 
+Lead_Characters_allep <- NA # Initialize
+
 for(i in 1:num_episodes) {
-  
+
 file_url <- all_episodes[i]
 
-Series_Characters <- file_url %>%
+all_Characters <- file_url %>%
   read_html() %>%
   html_nodes(css = 'b') %>%
   html_text()
@@ -25,19 +27,31 @@ Series_Characters <- file_url %>%
 # Define function `cleanlist`
 cleanlist <- function(x) gsub(pattern = "(.*):.*" ,replacement = "\\1", x = x)
 
-Series_Characters <- sapply(X = Series_Characters, FUN = cleanlist, USE.NAMES = F)
-Series_Characters <- str_trim(string = Series_Characters)
-Series_Characters <- gsub(pattern = "^$",
-                          replacement = NA_character_, x = Series_Characters)
-Lead_actors <- Series_Characters[Series_Characters %in% c("Chandler", "Joey",
+all_Characters <- sapply(X = all_Characters, FUN = cleanlist, USE.NAMES = F)
+all_Characters <- str_trim(string = all_Characters)
+all_Characters <- gsub(pattern = "^$",
+                          replacement = NA_character_, x = all_Characters)
+Lead_Characters <- all_Characters[all_Characters %in% c("Chandler", "Joey",
                                                           "Monica", "Phoebe", "Rachel", "Ross")]
 
-if(sum(!is.na(x = Lead_actors)) != 0) {
-png(paste0(WorkDir,"plots", "/Rplot", as.character(i), ".png"))
-barplot(height=table(Lead_actors))
+if(sum(!is.na(x = Lead_Characters)) != 0) {
+png(paste0(WorkDir,"plots/episode", i, "frequency_plot.png"))
+barplot(height=table(Lead_Characters), xlab = "Lead Characters",
+        ylab = "# Dialogues in the episode",
+        col = c("lightblue", "mistyrose", "lightcyan", "lavender"),
+        main = "# Dialogue of Lead characters in F.R.I.E.N.D.S TV series (1994-2004)")
 dev.off()
+} else paste0("fail for", i)
+
+Lead_Characters_allep <- c(Lead_Characters_allep, Lead_Characters)
+
 }
 
-if(sum(!is.na(x = Lead_actors)) == 0) paste0("fail for", as.character(i))
-
-}
+png(paste0(WorkDir,"plots/allep_frequency_plot.png"))
+  barplot(height=table(Lead_Characters_allep), 
+          xlab = "Lead Characters",
+          ylab = "# Dialogues in the series",
+          col = c("lightblue", "mistyrose", "lightcyan", "lavender"),
+          main = "# Dialogue of Lead characters in F.R.I.E.N.D.S TV series (1994-2004)"
+          )
+dev.off()

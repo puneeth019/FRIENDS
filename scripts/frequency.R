@@ -55,16 +55,13 @@ for(i in 1:num_episodes) {
     dev.off()
 
   } else warning(paste0("fail for", i))
-  
-  Lead_Characters <- tolower(x = Lead_Characters)
-  
+    
   # Number of dialogues by each character in each episode
   num_dialogues[i,] <- sapply(X = friends,
-                              function(x) length(all_Characters[all_Characters %in% x]))
-  
-  # Plot number of dialogues versus friends for each episode
-
-Lead_Characters_allep <- c(Lead_Characters_allep, Lead_Characters)
+                              function(x) length(Lead_Characters[Lead_Characters %in% x]))
+                                
+  # Store all Lead Characters in single character vector
+  Lead_Characters_allep <- c(Lead_Characters_allep, Lead_Characters)
   
 }
 
@@ -98,7 +95,7 @@ for(k in 2:length(friends))
   lines(x = 1:num_episodes, y = num_dialogues[,k], col = plot_colors[k])
 dev.off()
 
-# Plot numr of dialogues summed for all episodes versus friend
+# Plot number of dialogues summed for all episodes versus friend
 png(paste0(WorkDir,"plots/allep_frequency_plot.png"), width = 800, height = 600)
 barplot(height=table(Lead_Characters_allep), xlab = "Lead Characters",
         ylab = "Number of Dialogues", col = plot_colors,

@@ -1,9 +1,12 @@
-# Sample script to scrape table from webpage
-library(rvest)    # Load `rvest` package
-library(stringr)  # Load `stringr` package
+load_pacakges <- c("dplyr", "tidyr", "readr", "stringr",
+                   "magrittr", "ggplot2", "rvest", "lubridate", 
+                   "rlist", "caret", "broom")
+lapply(load_pacakges, require, character.only = TRUE)
+# Load Packages
 
 WorkDir <- "C:/DA/Projects/F.R.I.E.N.D.S/"
 setwd(dir = paste0(WorkDir, "scripts/"))
+# Set Working Directory
 
 season_num <- c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10")
 files_path <- paste0(WorkDir, "transcripts/season", season_num, "/")

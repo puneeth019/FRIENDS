@@ -1,7 +1,7 @@
 # Load Packages
 load_pacakges <- c("dplyr", "tidyr", "readr", "stringr",
                    "magrittr", "ggplot2", "rvest", "lubridate", 
-                   "rlist", "caret", "broom")
+                   "rlist", "caret", "broom", "reshape2")
 lapply(load_pacakges, require, character.only = TRUE)
 
 # Set Working Directory
@@ -134,8 +134,8 @@ names(df) <- c("Episode_Number", FRIENDS)
 for(j in 1:length(FRIENDS)){
   
   # Set name and dimensions for the plot
-  png(filename = paste0(WorkDir,
-                        "plots/#Dialogues_vs_ep_", FRIENDS[j],".png"),
+  png(filename = paste0(WorkDir, "plots/#Dialogues_vs_ep_",
+                        FRIENDS[j],".png"),
       width = 800, height = 500)
   p <- ggplot(data = df, aes(x = Episode_Number, y = df[,j+1])) +
     # Set plot type to line plot
@@ -165,16 +165,18 @@ for(j in 1:length(FRIENDS)){
 ## Plot `#Dialogues` versus `Episode number` for all 
 ## six Lead characters in the same plot, unlike above plot
 ## Six line plots in a single Chart
+# Create data.frame `df` and change its column names
+df <- data.frame(1:num_episodes, num_dialogues)
+names(df) <- c("Episode_Number", FRIENDS)
+# Convert `df` from wide to long format 
+# using `reshape2::melt`
+long_df <- melt(data = df, id.vars = "Episode_Number")
 # Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends.png"), 
+png(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_lineplot.png"), 
     width = 800, height = 500)
-p <- ggplot(data = df, aes(x = Episode_Number)) +
-  geom_line(aes(y = df[,2], colour = FRIENDS[1])) + 
-  geom_line(aes(y = df[,3], colour = FRIENDS[2])) +
-  geom_line(aes(y = df[,4], colour = FRIENDS[3])) + 
-  geom_line(aes(y = df[,5], colour = FRIENDS[4])) +
-  geom_line(aes(y = df[,6], colour = FRIENDS[5])) +
-  geom_line(aes(y = df[,7], colour = FRIENDS[6])) +
+p <- ggplot(data = long_df, 
+            aes(x = Episode_Number, y = value, colour = variable)) +
+  geom_line() +
   # Set colours for lines manually using `plot_colours`
   scale_colour_manual("FRIENDS", values = plot_colours) +
   # Set theme to `minimal`
@@ -228,6 +230,50 @@ p <- ggplot(data = df, aes(x = FRIENDS,
   scale_fill_manual(values = plot_colours) +
   # Convert vertical barplot into horizontal one
   coord_flip()
+# Print the plot
+print(p)
+dev.off()
+
+
+
+
+
+
+
+
+
+
+
+## Plot Number of Dialogues per Episode
+## vs. Episode number for all Lead Characters
+## Stacked Barplot
+# Convert a data.frame `df` and 
+# change its column names
+df <- data.frame(1:num_episodes, num_dialogues)
+names(df) <- c("Episode_Number", FRIENDS)
+# Convert `df` from wide to long format 
+# using `reshape2::melt`
+long_df <- melt(data = df, id.vars = "Episode_Number")
+# Set name and dimensions for the plot
+png(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"), 
+    width = 800, height = 500)
+p <- ggplot(data = long_df, 
+            aes(x = Episode_Number, y = value, fill = variable)) +
+  # Set plot type to Bar plot and adjust width of bars
+  geom_bar(stat = "identity") +
+  # Set theme to `minimal`
+  theme_minimal() +
+  # Set plot title and lables for x & y axes
+  labs(title = "Number of Dialogues versus Episode Number", 
+       x = "Episode Number", y = "Number of Dialogues") +
+  # Set text for Title, x & y axes labels
+  theme(plot.title = element_text(size = 20, hjust = 0.5), 
+        axis.text = element_text(face = "bold", size = 12),
+        axis.title = element_text(face = "bold", size = 16),
+        # legend position
+        legend.position = c(0.1,0.8)) +
+  # Set colours for bars
+  scale_fill_manual("FRIENDS", values = plot_colours)
 # Print the plot
 print(p)
 dev.off()

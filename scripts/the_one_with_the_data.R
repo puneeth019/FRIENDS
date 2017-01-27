@@ -1,3 +1,4 @@
+### The One With the Data :D
 # Load Packages
 load_pacakges <- c("dplyr", "tidyr", "readr", "stringr",
                    "magrittr", "ggplot2", "rvest", "lubridate", 
@@ -84,7 +85,7 @@ for(i in 1:num_episodes) {
       theme_minimal() +
       # Set title for plot and lables for x & y axes
       labs(title = "Number of Dialogues by Lead Characters
-           \n in F.R.I.E.N.D.S T.V series (1994-2004)",
+           \n F.R.I.E.N.D.S T.V series (1994-2004)",
            x = paste0("Episode #",i),
            y = "Number of Dialogues") +
       # Set text for Title, x & y axes labels
@@ -122,9 +123,7 @@ num_dialogues <- as.data.frame(x = num_dialogues)
 names(num_dialogues) <- FRIENDS
 
 
-
-
-
+                              
 ## Plot `#Dialogues` vs. `Episode number` for each Lead Character
 ## This `for` loop runs six times, once for each Lead character
 ## Total six line plots, one per loop
@@ -134,14 +133,11 @@ names(df) <- c("Episode_Number", FRIENDS)
 for(j in 1:length(FRIENDS)){
   
   # Set name and dimensions for the plot
-  png(filename = paste0(WorkDir, "plots/#Dialogues_vs_ep_",
-                        FRIENDS[j],".png"),
+  png(paste0(WorkDir, "plots/#Dialogues_vs_ep_", FRIENDS[j],".png"),
       width = 800, height = 500)
   p <- ggplot(data = df, aes(x = Episode_Number, y = df[,j+1])) +
     # Set plot type to line plot
     geom_line() +
-    # Set theme to `minimal`
-    theme_minimal() +
     # Set title for plot and lables for x & y axes
     labs(title = paste0(" Number of Dialogues vs. Episode by ",
                         FRIENDS[j]),
@@ -159,9 +155,8 @@ for(j in 1:length(FRIENDS)){
   
 }
 
-
-
-
+                              
+                              
 ## Plot `#Dialogues` versus `Episode number` for all 
 ## six Lead characters in the same plot, unlike above plot
 ## Six line plots in a single Chart
@@ -171,16 +166,11 @@ names(df) <- c("Episode_Number", FRIENDS)
 # Convert `df` from wide to long format 
 # using `reshape2::melt`
 long_df <- melt(data = df, id.vars = "Episode_Number")
-# Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_lineplot.png"), 
-    width = 800, height = 500)
 p <- ggplot(data = long_df, 
             aes(x = Episode_Number, y = value, colour = variable)) +
   geom_line() +
   # Set colours for lines manually using `plot_colours`
   scale_colour_manual("FRIENDS", values = plot_colours) +
-  # Set theme to `minimal`
-  theme_minimal() +
   # Set title for plot and lables for x & y axes
   labs(title = paste0("Number of Dialogues versus Episode Number"), 
        x = "Episode Number", y = "Number of Dialogues") +
@@ -191,11 +181,9 @@ p <- ggplot(data = long_df,
         axis.title.y = element_text(vjust = 1.5),
         # legend position
         legend.position = c(0.1,0.8))
-# Print the plot
-print(p)
-dev.off()
-
-
+# Set name and dimensions for the plot and save it
+ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
+       width = 7, height = 5)
 
 
 
@@ -206,9 +194,6 @@ dev.off()
 # into `data.frame` and change its column names
 df <- as.data.frame(table(Lead_Characters_allep))
 names(df) <- c("FRIENDS", "Number_of_Dialogues")
-# Set name and dimensions for the plot
-png(paste0(WorkDir,"plots/allep_frequency_plot.png"),
-    width = 800, height = 500)
 p <- ggplot(data = df, aes(x = FRIENDS,
                            y = Number_of_Dialogues,
                            fill = FRIENDS)) +
@@ -218,7 +203,7 @@ p <- ggplot(data = df, aes(x = FRIENDS,
   theme_minimal() +
   # Set plot title and lables for x & y axes
   labs(title = "Total Number of Dialogues by Lead Characters
-       \n in F.R.I.E.N.D.S T.V series (1994-2004)", 
+       \n F.R.I.E.N.D.S T.V series (1994-2004)", 
        x = NULL, y = "Number of Dialogues") +
   # Set text for Title, x & y axes labels
   theme(plot.title = element_text(size = 20, hjust = 0.5), 
@@ -230,20 +215,12 @@ p <- ggplot(data = df, aes(x = FRIENDS,
   scale_fill_manual(values = plot_colours) +
   # Convert vertical barplot into horizontal one
   coord_flip()
-# Print the plot
-print(p)
-dev.off()
+# Set name and dimensions for the plot and save it
+ggsave(paste0(WorkDir,"plots/allep_frequency_plot.png"),
+       width = 7, height = 5)
 
 
-
-
-
-
-
-
-
-
-
+                              
 ## Plot Number of Dialogues per Episode
 ## vs. Episode number for all Lead Characters
 ## Stacked Barplot
@@ -254,15 +231,10 @@ names(df) <- c("Episode_Number", FRIENDS)
 # Convert `df` from wide to long format 
 # using `reshape2::melt`
 long_df <- melt(data = df, id.vars = "Episode_Number")
-# Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"), 
-    width = 800, height = 500)
 p <- ggplot(data = long_df, 
             aes(x = Episode_Number, y = value, fill = variable)) +
   # Set plot type to Bar plot and adjust width of bars
   geom_bar(stat = "identity") +
-  # Set theme to `minimal`
-  theme_minimal() +
   # Set plot title and lables for x & y axes
   labs(title = "Number of Dialogues versus Episode Number", 
        x = "Episode Number", y = "Number of Dialogues") +
@@ -271,11 +243,24 @@ p <- ggplot(data = long_df,
         axis.text = element_text(face = "bold", size = 12),
         axis.title = element_text(face = "bold", size = 16),
         # legend position
-        legend.position = c(0.1,0.8)) +
+        legend.position = c(0.1,0.78)) +
   # Set colours for bars
   scale_fill_manual("FRIENDS", values = plot_colours)
-# Print the plot
-print(p)
-dev.off()
+# Set name and dimensions for the plot and save it
+ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
+       width = 7, height = 5)
 
+                              
 
+# Idead for more plots 
+# Stacked Bar plot w.r.t Season# on X-axis (instead of episode#)
+# Stacked 100% Bar plot w.r.t Episode# on x-axis
+# Stacked 100% Bar plot w.r.t Season# on x-axis
+# Circular area charts(for each Friend)
+# Simple Pie Chart to show composition
+# y – axis ( 0 to 1) Number of dia¬logues; x – axis episode number ( labels – six lead characters)
+# Plot the above plot for all 10 seasons and for each season separately as well
+# Plot the contribution (0 to 1) of each lead character per episode
+# Rather than Episode Number in the plots, extract the actual name of episode and plot
+# Or replace episode number with SXXEXX format
+# Divide the main script into multiple small scripts for better understanding

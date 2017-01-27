@@ -15,6 +15,11 @@ season_num <- c("01", "02", "03", "04", "05",
 files_path <- paste0(WorkDir, "transcripts/season", season_num, "/")
 files_list <- lapply(X = files_path, FUN = list.files)
 
+episodes_per_season <- lapply(X = files_list, FUN = length) %>% unlist()
+
+season_num_per_episode <- rep(x = paste0("season ", season_num),
+                          times = episodes_per_season)
+
 all_episodes <- mapply(FUN = function(x,y) paste0(x,y),
                        x = files_path, y=files_list) %>% 
   unlist(use.names = F)
@@ -30,7 +35,7 @@ FRIENDS <- c("CHANDLER", "JOEY", "MONICA",
 # Set colours to create plots/graphs
 # These are colour-blind-friendly palettes
 plot_colours <- c("#000000", "#E69F00", "#56B4E9",
-                 "#009E73", "#F0E442", "#0072B2")
+                  "#009E73", "#F0E442", "#0072B2")
 
 # Initialize vector `Lead_Characters_allep`
 Lead_Characters_allep <- NA 
@@ -66,17 +71,15 @@ for(i in 1:num_episodes) {
   # If not, enter the 'else' section and display warning message
   if(sum(!is.na(x = Lead_Characters)) != 0) {
     
-    
-    
     # Convert the character vector `Lead_Characters` 
     # into `data.frame` and change its column names
-    df <- as.data.frame(table(Lead_Characters))
-    names(df) <- c("FRIENDS", "Number_of_Dialogues")
+    dial_per_epi <- as.data.frame(table(Lead_Characters))
+    names(dial_per_epi) <- c("FRIENDS", "Number_of_Dialogues")
     # Set name and dimensions for the plot
     png(paste0(WorkDir,"plots/episode",
                i, "frequency_plot.png"),
         width = 800, height = 500)
-    p <- ggplot(data = df, aes(x = FRIENDS, 
+    p <- ggplot(data = dial_per_epi, aes(x = FRIENDS, 
                                y = Number_of_Dialogues,
                                fill = FRIENDS)) +
       # Set plot type to Bar plot and adjust width of bars
@@ -110,6 +113,8 @@ for(i in 1:num_episodes) {
                               function(x) 
                                 length(Lead_Characters[Lead_Characters %in% x]))
   
+
+  
   # Store the list of all repeated Lead character 
   # names for all episodes in a single character 
   # vector `Lead_Characters_allep`
@@ -119,23 +124,21 @@ for(i in 1:num_episodes) {
 }
 
 # Convert matrix `num_dialogues` into data.frame and name its columns
-num_dialogues <- as.data.frame(x = num_dialogues)
-names(num_dialogues) <- FRIENDS
+dialogues <- data.frame(1:num_episodes, num_dialogues, 
+                        season_num_per_episode)
+names(dialogues) <- c("Episode_Number", FRIENDS, "season")
 
 
-                              
 ## Plot `#Dialogues` vs. `Episode number` for each Lead Character
 ## This `for` loop runs six times, once for each Lead character
 ## Total six line plots, one per loop
-# Create data.frame `df` and change its column names
-df <- data.frame(1:num_episodes, num_dialogues)
-names(df) <- c("Episode_Number", FRIENDS)
 for(j in 1:length(FRIENDS)){
   
   # Set name and dimensions for the plot
   png(paste0(WorkDir, "plots/#Dialogues_vs_ep_", FRIENDS[j],".png"),
       width = 800, height = 500)
-  p <- ggplot(data = df, aes(x = Episode_Number, y = df[,j+1])) +
+  p <- ggplot(data = dialogues,
+              aes(x = Episode_Number, y = dialogues[,j+1])) +
     # Set plot type to line plot
     geom_line() +
     # Set title for plot and lables for x & y axes
@@ -149,24 +152,24 @@ for(j in 1:length(FRIENDS)){
           axis.title.y = element_text(vjust = 1.5),
           # legend position
           legend.position = "none")
-    # Print the plot
-    print(p)
+  # Print the plot
+  print(p)
   dev.off()
   
 }
 
-                              
-                              
+
+# Convert data.frame `dialogues` from wide to long format 
+# using `reshape2::melt`
+# This is done to create plot efficiently
+dialogues_long <- melt(data = dialogues, id.vars = "Episode_Number")
+
+
+
 ## Plot `#Dialogues` versus `Episode number` for all 
 ## six Lead characters in the same plot, unlike above plot
 ## Six line plots in a single Chart
-# Create data.frame `df` and change its column names
-df <- data.frame(1:num_episodes, num_dialogues)
-names(df) <- c("Episode_Number", FRIENDS)
-# Convert `df` from wide to long format 
-# using `reshape2::melt`
-long_df <- melt(data = df, id.vars = "Episode_Number")
-p <- ggplot(data = long_df, 
+p <- ggplot(data = dialogues_long,
             aes(x = Episode_Number, y = value, colour = variable)) +
   geom_line() +
   # Set colours for lines manually using `plot_colours`
@@ -190,13 +193,8 @@ ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
 ## Plot `Total #Dialogues` vs. `Episode number` 
 ## summed for all episodes for all Lead Character
 ## Single barplot
-# Convert the character vector `Lead_Characters_allep` 
-# into `data.frame` and change its column names
-df <- as.data.frame(table(Lead_Characters_allep))
-names(df) <- c("FRIENDS", "Number_of_Dialogues")
-p <- ggplot(data = df, aes(x = FRIENDS,
-                           y = Number_of_Dialogues,
-                           fill = FRIENDS)) +
+p <- ggplot(data = dialogues,
+            aes(x = FRIENDS, y = Number_of_Dialogues, fill = FRIENDS)) +
   # Set plot type to Bar plot and adjust width of bars
   geom_bar(stat = "identity") +
   # Set theme to `minimal`
@@ -220,18 +218,11 @@ ggsave(paste0(WorkDir,"plots/allep_frequency_plot.png"),
        width = 7, height = 5)
 
 
-                              
+
 ## Plot Number of Dialogues per Episode
 ## vs. Episode number for all Lead Characters
 ## Stacked Barplot
-# Convert a data.frame `df` and 
-# change its column names
-df <- data.frame(1:num_episodes, num_dialogues)
-names(df) <- c("Episode_Number", FRIENDS)
-# Convert `df` from wide to long format 
-# using `reshape2::melt`
-long_df <- melt(data = df, id.vars = "Episode_Number")
-p <- ggplot(data = long_df, 
+p <- ggplot(data = dialogues_long, 
             aes(x = Episode_Number, y = value, fill = variable)) +
   # Set plot type to Bar plot and adjust width of bars
   geom_bar(stat = "identity") +
@@ -250,7 +241,7 @@ p <- ggplot(data = long_df,
 ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
        width = 7, height = 5)
 
-                              
+
 
 # Idead for more plots 
 # Stacked Bar plot w.r.t Season# on X-axis (instead of episode#)
@@ -258,7 +249,7 @@ ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
 # Stacked 100% Bar plot w.r.t Season# on x-axis
 # Circular area charts(for each Friend)
 # Simple Pie Chart to show composition
-# y – axis ( 0 to 1) Number of dia¬logues; x – axis episode number ( labels – six lead characters)
+# y - axis ( 0 to 1) Number of dia¬logues; x - axis episode number ( labels - six lead characters)
 # Plot the above plot for all 10 seasons and for each season separately as well
 # Plot the contribution (0 to 1) of each lead character per episode
 # Rather than Episode Number in the plots, extract the actual name of episode and plot

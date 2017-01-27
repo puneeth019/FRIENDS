@@ -22,10 +22,17 @@ Notes by Puneeth Gandla – last updated on 28th October 2016
 15. How beautiful/sexy is Rachel?
 
 
-Ideas for plots
-1. y – axis ( 0 to 1) Number of dia¬logues; x – axis episode number ( labels – six lead characters)
-	Plot the contribution (0 to 1) of each lead character per episode
-2. Rather than Episode Number in the plots, extract the actual name of episode and plot
-3. Or replace episode number with SXXEXX format
-4. Divide the main script into multiple small scripts for better understanding
-5. Plot number 1 for all 10 seasons and for each season separately as well
+
+
+# Ideas for more plots 
+# Stacked Bar plot w.r.t Season# on X-axis (instead of episode#)
+# Stacked 100% Bar plot w.r.t Episode# on x-axis
+# Stacked 100% Bar plot w.r.t Season# on x-axis
+# Circular area charts (for each Friend)
+# Simple Pie Chart to show composition
+# y - Axis (0 to 1) Number of dialogues; x - axis episode number (labels - six lead characters)
+# Plot the above plot for all 10 seasons and for each season separately as well
+# Plot the contribution (0 to 1) of each lead character per episode
+# Rather than Episode Number in the plots, extract the actual name of episode and plot
+# Or replace episode number with SXXEXX format
+# Divide the main script into multiple small scripts for better understanding

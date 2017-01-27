@@ -160,17 +160,21 @@ for(j in 1:length(FRIENDS)){
 
 
 # Convert data.frame `dialogues` from wide to long format 
-# using `reshape2::melt`
-# This is done to create plot efficiently
-dialogues_long <- melt(data = dialogues, id.vars = "Episode_Number")
+# using `tidyr::gather`
+# This is done to create plots efficiently
+#dialogues_long <- melt(data = dialogues, id.vars = "Episode_Number")
+dialogues_long <- gather(data = dialogues, 
+                         key = FRIENDS, 
+                         value = dialogues_num, CHANDLER:ROSS)
 
 
 
 ## Plot `#Dialogues` versus `Episode number` for all 
 ## six Lead characters in the same plot, unlike above plot
 ## Six line plots in a single Chart
-p <- ggplot(data = dialogues_long,
-            aes(x = Episode_Number, y = value, colour = variable)) +
+p <- ggplot(data = dialogues_long, aes(x = Episode_Number, 
+                                       y = dialogues_num, 
+                                       colour = FRIENDS)) +
   geom_line() +
   # Set colours for lines manually using `plot_colours`
   scale_colour_manual("FRIENDS", values = plot_colours) +
@@ -193,8 +197,11 @@ ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
 ## Plot `Total #Dialogues` vs. `Episode number` 
 ## summed for all episodes for all Lead Character
 ## Single barplot
-p <- ggplot(data = dialogues,
-            aes(x = FRIENDS, y = Number_of_Dialogues, fill = FRIENDS)) +
+df <- as.data.frame(table(Lead_Characters_allep))
+names(df) <- c("FRIENDS", "Number_of_Dialogues")
+p <- ggplot(data = df,
+            aes(x = FRIENDS, y = Number_of_Dialogues, 
+                fill = FRIENDS)) +
   # Set plot type to Bar plot and adjust width of bars
   geom_bar(stat = "identity") +
   # Set theme to `minimal`
@@ -222,8 +229,9 @@ ggsave(paste0(WorkDir,"plots/allep_frequency_plot.png"),
 ## Plot Number of Dialogues per Episode
 ## vs. Episode number for all Lead Characters
 ## Stacked Barplot
-p <- ggplot(data = dialogues_long, 
-            aes(x = Episode_Number, y = value, fill = variable)) +
+p <- ggplot(data = dialogues_long, aes(x = Episode_Number, 
+                                       y = dialogues_num, 
+                                       fill = FRIENDS)) +
   # Set plot type to Bar plot and adjust width of bars
   geom_bar(stat = "identity") +
   # Set plot title and lables for x & y axes

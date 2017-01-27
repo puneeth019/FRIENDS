@@ -20,3 +20,12 @@ Notes by Puneeth Gandla – last updated on 28th October 2016
 13. How Dumb is Joey?
 14. How weird is Phoebe?
 15. How beautiful/sexy is Rachel?
+
+
+Ideas for plots
+1. y – axis ( 0 to 1) Number of dia¬logues; x – axis episode number ( labels – six lead characters)
+	Plot the contribution (0 to 1) of each lead character per episode
+2. Rather than Episode Number in the plots, extract the actual name of episode and plot
+3. Or replace episode number with SXXEXX format
+4. Divide the main script into multiple small scripts for better understanding
+5. Plot number 1 for all 10 seasons and for each season separately as well

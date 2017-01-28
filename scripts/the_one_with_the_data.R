@@ -17,8 +17,10 @@ files_list <- lapply(X = files_path, FUN = list.files)
 
 episodes_per_season <- lapply(X = files_list, FUN = length) %>% unlist()
 
-season_num_per_episode <- rep(x = paste0("season ", season_num),
+season_num_per_episode <- rep(x = season_num,
                           times = episodes_per_season)
+#season_num_per_episode <- rep(x = paste0("season ", season_num),
+#                              times = episodes_per_season)
 
 all_episodes <- mapply(FUN = function(x,y) paste0(x,y),
                        x = files_path, y=files_list) %>% 
@@ -123,10 +125,49 @@ for(i in 1:num_episodes) {
   
 }
 
+
+
+
+
+## Plot `Total #Dialogues` vs. `Episode number` 
+## summed for all episodes for all Lead Character
+## Single barplot
+df <- as.data.frame(table(Lead_Characters_allep))
+names(df) <- c("FRIENDS", "Number_of_Dialogues")
+# Set name and dimensions for the plot
+png(paste0(WorkDir,"plots/allep_frequency_plot.png"),
+       width = 800, height = 500)
+p <- ggplot(data = df,
+            aes(x = FRIENDS, y = Number_of_Dialogues, 
+                fill = FRIENDS)) +
+  # Set plot type to Bar plot and adjust width of bars
+  geom_bar(stat = "identity") +
+  # Set theme to `minimal`
+  theme_minimal() +
+  # Set plot title and lables for x & y axes
+  labs(title = "Total Number of Dialogues by Lead Characters
+       \n F.R.I.E.N.D.S T.V series (1994-2004)", 
+       x = NULL, y = "Number of Dialogues") +
+  # Set text for Title, x & y axes labels
+  theme(plot.title = element_text(size = 20, hjust = 0.5), 
+        axis.text = element_text(face = "bold", size = 12),
+        axis.title = element_text(face = "bold", size = 16),
+        # legend position
+        legend.position = "none") +
+  # Set colours for bars
+  scale_fill_manual(values = plot_colours) +
+  # Convert vertical barplot into horizontal one
+  coord_flip()
+print(p)
+dev.off()
+
+
 # Convert matrix `num_dialogues` into data.frame and name its columns
 dialogues <- data.frame(1:num_episodes, num_dialogues, 
-                        season_num_per_episode)
+                        season_num_per_episode, 
+                        stringsAsFactors = F)
 names(dialogues) <- c("Episode_Number", FRIENDS, "season")
+
 
 
 ## Plot `#Dialogues` vs. `Episode number` for each Lead Character
@@ -159,18 +200,21 @@ for(j in 1:length(FRIENDS)){
 }
 
 
+
 # Convert data.frame `dialogues` from wide to long format 
 # using `tidyr::gather`
 # This is done to create plots efficiently
-#dialogues_long <- melt(data = dialogues, id.vars = "Episode_Number")
 dialogues_long <- gather(data = dialogues, 
                          key = FRIENDS, 
                          value = dialogues_num, CHANDLER:ROSS)
 
 
-
 ## Plot `#Dialogues` versus `Episode number` for all 
 ## six Lead characters in the same plot, unlike above plot
+# Set name and dimensions for the plot
+png(paste0(WorkDir, 
+           "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
+    width = 800, height = 500)
 ## Six line plots in a single Chart
 p <- ggplot(data = dialogues_long, aes(x = Episode_Number, 
                                        y = dialogues_num, 
@@ -188,46 +232,17 @@ p <- ggplot(data = dialogues_long, aes(x = Episode_Number,
         axis.title.y = element_text(vjust = 1.5),
         # legend position
         legend.position = c(0.1,0.8))
-# Set name and dimensions for the plot and save it
-ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
-       width = 7, height = 5)
-
-
-
-## Plot `Total #Dialogues` vs. `Episode number` 
-## summed for all episodes for all Lead Character
-## Single barplot
-df <- as.data.frame(table(Lead_Characters_allep))
-names(df) <- c("FRIENDS", "Number_of_Dialogues")
-p <- ggplot(data = df,
-            aes(x = FRIENDS, y = Number_of_Dialogues, 
-                fill = FRIENDS)) +
-  # Set plot type to Bar plot and adjust width of bars
-  geom_bar(stat = "identity") +
-  # Set theme to `minimal`
-  theme_minimal() +
-  # Set plot title and lables for x & y axes
-  labs(title = "Total Number of Dialogues by Lead Characters
-       \n F.R.I.E.N.D.S T.V series (1994-2004)", 
-       x = NULL, y = "Number of Dialogues") +
-  # Set text for Title, x & y axes labels
-  theme(plot.title = element_text(size = 20, hjust = 0.5), 
-        axis.text = element_text(face = "bold", size = 12),
-        axis.title = element_text(face = "bold", size = 16),
-        # legend position
-        legend.position = "none") +
-  # Set colours for bars
-  scale_fill_manual(values = plot_colours) +
-  # Convert vertical barplot into horizontal one
-  coord_flip()
-# Set name and dimensions for the plot and save it
-ggsave(paste0(WorkDir,"plots/allep_frequency_plot.png"),
-       width = 7, height = 5)
+print(p)
+dev.off()
 
 
 
 ## Plot Number of Dialogues per Episode
 ## vs. Episode number for all Lead Characters
+# Set name and dimensions for the plot
+png(paste0(WorkDir, 
+           "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
+    width = 800, height = 500)
 ## Stacked Barplot
 p <- ggplot(data = dialogues_long, aes(x = Episode_Number, 
                                        y = dialogues_num, 
@@ -245,9 +260,8 @@ p <- ggplot(data = dialogues_long, aes(x = Episode_Number,
         legend.position = c(0.1,0.78)) +
   # Set colours for bars
   scale_fill_manual("FRIENDS", values = plot_colours)
-# Set name and dimensions for the plot and save it
-ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
-       width = 7, height = 5)
+print(p)
+dev.off()
 
 
 
@@ -263,3 +277,140 @@ ggsave(paste0(WorkDir, "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
 # Rather than Episode Number in the plots, extract the actual name of episode and plot
 # Or replace episode number with SXXEXX format
 # Divide the main script into multiple small scripts for better understanding
+
+
+
+# Calcualte #Dialogues vs season# for each Character
+numdial_wrt_season <- dialogues %>%
+  # Convert data.frame `dialogues` from wide to long format
+  gather(key = "FRIENDS", 
+         value = "dialogues_num", -Episode_Number, -season) %>% 
+  group_by(season, FRIENDS) %>% 
+  summarize(dialogues_num = sum(dialogues_num)) %>% 
+  ungroup
+
+# Set name and dimensions for the plot
+png(paste0(WorkDir, "plots/#Num_Dial_vs_season.png"),
+    width = 800, height = 500)
+p <- ggplot(data = numdial_wrt_season, 
+            aes(x = season, y = dialogues_num, fill = FRIENDS)) +
+  # Set plot type to Bar plot
+  geom_bar(stat = "identity") +
+  # Set plot title and lables for x & y axes
+  labs(title = "Number of Dialogues vs Season", 
+       x = "Season", y = "Number of Dialogues") +
+  # Set text for Title, x & y axes labels
+  theme(plot.title = element_text(size = 20, hjust = 0.5), 
+        axis.text = element_text(face = "bold", size = 12),
+        axis.title = element_text(face = "bold", size = 16),
+        # legend position
+        legend.position = "right",
+        # Set Panel Background
+        panel.background = element_rect(fill = "white", colour = "black")) +
+  # Set colours for bars
+  scale_fill_manual(NULL, values = plot_colours)
+print(p)
+dev.off()
+
+
+
+# Calcualte % Dialogues vs season# for each Character
+percdial_wrt_season <- numdial_wrt_season %>% 
+  group_by(season) %>% 
+  mutate(perc = dialogues_num / sum(dialogues_num) * 100) %>% 
+  ungroup
+
+# Set name and dimensions for the plot
+png(paste0(WorkDir, "plots/#Perc_Dial_vs_season.png"),
+    width = 900, height = 500)
+p <- ggplot(data = percdial_wrt_season, 
+            aes(x = season, y = perc, fill = FRIENDS)) +
+  # Set plot type to Bar plot
+  geom_bar(stat = "identity") +
+  # Set plot title and lables for x & y axes
+  labs(title = "Percentage of Dialogues vs Season", 
+       x = "Season", y = "Percentage of Dialogues") +
+  # Set text for Title, x & y axes labels
+  theme(plot.title = element_text(size = 20, hjust = 0.5), 
+        axis.text = element_text(face = "bold", size = 12),
+        axis.title = element_text(face = "bold", size = 16),
+        # legend position
+        legend.position = "right",
+        # Set Panel Background
+        panel.background = element_rect(fill = "white", colour = "black")) +
+  # Set colours for bars
+  scale_fill_manual(NULL, values = plot_colours)
+print(p)
+dev.off()
+
+
+
+# Calcualte #Dialogues vs Character for each season
+numdial_wrt_char <- dialogues %>% 
+  gather(key = "FRIENDS",
+         value = "dialogues_num", -Episode_Number, -season) %>% 
+  group_by(FRIENDS, season) %>% 
+  summarize(dialogues_num = sum(dialogues_num)) %>% 
+  ungroup %>% 
+  group_by(FRIENDS) %>%
+  ungroup
+
+# Set name and dimensions for the plot
+png(paste0(WorkDir, "plots/#Num_Dial_vs_character.png"),
+    width = 900, height = 500)
+p <- ggplot(data = numdial_wrt_char, 
+            aes(x = FRIENDS, y = dialogues_num, fill = season)) +
+  # Set plot type to Bar plot and adjust width of bars
+  geom_bar(stat = "identity") +
+  # Set plot title and lables for x & y axes
+  labs(title = "Number of Dialogues vs. FRIENDS Characters", 
+       x = NULL, y = "Number of Dialogues") +
+  # Set text for Title, x & y axes labels
+  theme(plot.title = element_text(size = 20, hjust = 0.5), 
+        axis.text = element_text(face = "bold", size = 12),
+        axis.title = element_text(face = "bold", size = 16),
+        # legend position
+        legend.position = "right",
+        # Set Panel background
+        panel.background = element_rect(fill = "white", colour = "black")) +
+  scale_fill_manual("Season", values = c("#000000", "#E69F00", "#56B4E9", 
+                                         "#009E73", "#F0E442", "#0072B2", 
+                                         "#D55E00", "#CC79A7", "#000000", 
+                                         "#E69F00"))
+print(p)
+dev.off()
+
+
+
+# Calcualte % Dialogues vs Character for each season
+percdial_wrt_char <- numdial_wrt_char %>% 
+  group_by(FRIENDS) %>%
+  mutate(perc = dialogues_num/sum(dialogues_num) * 100) %>% 
+  ungroup
+
+# Set name and dimensions for the plot
+png(paste0(WorkDir, "plots/#Perc_Dial_vs_character.png"),
+    width = 900, height = 500)
+p <- ggplot(data = percdial_wrt_char, 
+            aes(x = FRIENDS, y = perc, fill = season)) +
+  # Set plot type to Bar plot and adjust width of bars
+  geom_bar(stat = "identity") +
+  # Set plot title and lables for x & y axes
+  labs(title = "Percentage of Dialogues vs. FRIENDS Characters", 
+       x = NULL, y = "Percentage of Dialogues") +
+  # Set text for Title, x & y axes labels
+  theme(plot.title = element_text(size = 20, hjust = 0.5), 
+        axis.text = element_text(face = "bold", size = 12),
+        axis.title = element_text(face = "bold", size = 16),
+        # legend position
+        legend.position = "right",
+        # Set Panel background
+        panel.background = element_rect(fill = "white", colour = "black")) +
+  scale_fill_manual("Season", values = c("#000000", "#E69F00", "#56B4E9", 
+                               "#009E73", "#F0E442", "#0072B2", 
+                               "#D55E00", "#CC79A7", "#000000", 
+                               "#E69F00"))
+print(p)
+dev.off()
+
+

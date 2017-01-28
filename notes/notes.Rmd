@@ -20,19 +20,5 @@ Notes by Puneeth Gandla – last updated on 28th October 2016
 13. How Dumb is Joey?
 14. How weird is Phoebe?
 15. How beautiful/sexy is Rachel?
-
-
-
-
-Ideas for more plots 
-1. Stacked Bar plot w.r.t Season# on X-axis (instead of episode#)
-2. Stacked 100% Bar plot w.r.t Episode# on x-axis
-3. Stacked 100% Bar plot w.r.t Season# on x-axis
-4. Circular area charts (for each Friend)
-5. Simple Pie Chart to show composition
-6. y - Axis (0 to 1) Number of dialogues; x - axis episode number (labels - six lead characters)
-7. Plot the above plot for all 10 seasons and for each season separately as well
-8. Plot the contribution (0 to 1) of each lead character per episode
-9. Rather than Episode Number in the plots, extract the actual name of episode and plot
-10. Or replace episode number with SXXEXX format
-11. Divide the main script into multiple small scripts for better understanding
+16. Rather than Episode Number in the plots, extract the actual name of episode and plot
+17. Divide the main script into multiple small scripts for better understanding

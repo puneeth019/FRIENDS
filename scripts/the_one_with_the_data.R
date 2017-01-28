@@ -36,8 +36,17 @@ FRIENDS <- c("CHANDLER", "JOEY", "MONICA",
 
 # Set colours to create plots/graphs
 # These are colour-blind-friendly palettes
-plot_colours <- c("#000000", "#E69F00", "#56B4E9",
+# Six colours combo is used for versus character plots,
+# as number of Characters are `Six`
+plot_colours_six <- c("#000000", "#E69F00", "#56B4E9",
                   "#009E73", "#F0E442", "#0072B2")
+# Ten Colours combo is used for versus Season plots,
+# as number of seasons are `Ten`
+plot_colours_ten <- c("#000000", "#E69F00", "#56B4E9", 
+                       "#009E73", "#F0E442", "#0072B2",
+                       "#D55E00", "#CC79A7", "#000000",
+                       "#E69F00")
+
 
 # Initialize vector `Lead_Characters_allep`
 Lead_Characters_allep <- NA 
@@ -101,7 +110,7 @@ for(i in 1:num_episodes) {
             # legend position
             legend.position = "none") +
       # Set colours for bars
-      scale_fill_manual(values = plot_colours) +
+      scale_fill_manual(values = plot_colours_six) +
       # Convert vertical plot into horizontal one
       coord_flip()
     print(p)
@@ -155,7 +164,7 @@ p <- ggplot(data = df,
         # legend position
         legend.position = "none") +
   # Set colours for bars
-  scale_fill_manual(values = plot_colours) +
+  scale_fill_manual(values = plot_colours_six) +
   # Convert vertical barplot into horizontal one
   coord_flip()
 print(p)
@@ -220,8 +229,8 @@ p <- ggplot(data = dialogues_long, aes(x = Episode_Number,
                                        y = dialogues_num, 
                                        colour = FRIENDS)) +
   geom_line() +
-  # Set colours for lines manually using `plot_colours`
-  scale_colour_manual("FRIENDS", values = plot_colours) +
+  # Set colours for lines
+  scale_colour_manual(values = plot_colours_six) +
   # Set title for plot and lables for x & y axes
   labs(title = paste0("Number of Dialogues versus Episode Number"), 
        x = "Episode Number", y = "Number of Dialogues") +
@@ -259,24 +268,9 @@ p <- ggplot(data = dialogues_long, aes(x = Episode_Number,
         # legend position
         legend.position = c(0.1,0.78)) +
   # Set colours for bars
-  scale_fill_manual("FRIENDS", values = plot_colours)
+  scale_fill_manual(values = plot_colours_six)
 print(p)
 dev.off()
-
-
-
-# Idead for more plots 
-# Stacked Bar plot w.r.t Season# on X-axis (instead of episode#)
-# Stacked 100% Bar plot w.r.t Episode# on x-axis
-# Stacked 100% Bar plot w.r.t Season# on x-axis
-# Circular area charts(for each Friend)
-# Simple Pie Chart to show composition
-# y - axis ( 0 to 1) Number of dia¬logues; x - axis episode number ( labels - six lead characters)
-# Plot the above plot for all 10 seasons and for each season separately as well
-# Plot the contribution (0 to 1) of each lead character per episode
-# Rather than Episode Number in the plots, extract the actual name of episode and plot
-# Or replace episode number with SXXEXX format
-# Divide the main script into multiple small scripts for better understanding
 
 
 
@@ -303,12 +297,12 @@ p <- ggplot(data = numdial_wrt_season,
   theme(plot.title = element_text(size = 20, hjust = 0.5), 
         axis.text = element_text(face = "bold", size = 12),
         axis.title = element_text(face = "bold", size = 16),
-        # legend position
-        legend.position = "right",
-        # Set Panel Background
-        panel.background = element_rect(fill = "white", colour = "black")) +
+        # Set Panel Background fill and border
+        panel.background = element_rect(fill = "white", colour = "black"),
+        panel.grid.major = element_line(colour = "grey"),
+        panel.grid.minor = element_line(colour = "grey", linetype = "dotted")) +
   # Set colours for bars
-  scale_fill_manual(NULL, values = plot_colours)
+  scale_fill_manual(NULL, values = plot_colours_six)
 print(p)
 dev.off()
 
@@ -337,9 +331,11 @@ p <- ggplot(data = percdial_wrt_season,
         # legend position
         legend.position = "right",
         # Set Panel Background
-        panel.background = element_rect(fill = "white", colour = "black")) +
+        panel.background = element_rect(fill = "white", colour = "black"),
+        panel.grid.major = element_line(colour = "grey"),
+        panel.grid.minor = element_line(colour = "grey", linetype = "dotted")) +
   # Set colours for bars
-  scale_fill_manual(NULL, values = plot_colours)
+  scale_fill_manual(NULL, values = plot_colours_six)
 print(p)
 dev.off()
 
@@ -371,12 +367,12 @@ p <- ggplot(data = numdial_wrt_char,
         axis.title = element_text(face = "bold", size = 16),
         # legend position
         legend.position = "right",
-        # Set Panel background
-        panel.background = element_rect(fill = "white", colour = "black")) +
-  scale_fill_manual("Season", values = c("#000000", "#E69F00", "#56B4E9", 
-                                         "#009E73", "#F0E442", "#0072B2", 
-                                         "#D55E00", "#CC79A7", "#000000", 
-                                         "#E69F00"))
+        # Set Panel background fill and border
+        panel.background = element_rect(fill = "white", colour = "black"),
+        panel.grid.major = element_line(colour = "grey"),
+        panel.grid.minor = element_line(colour = "grey", linetype = "dotted")) +
+  # Set colours for bars
+  scale_fill_manual(values = plot_colours_ten)
 print(p)
 dev.off()
 
@@ -402,15 +398,42 @@ p <- ggplot(data = percdial_wrt_char,
   theme(plot.title = element_text(size = 20, hjust = 0.5), 
         axis.text = element_text(face = "bold", size = 12),
         axis.title = element_text(face = "bold", size = 16),
-        # legend position
-        legend.position = "right",
-        # Set Panel background
-        panel.background = element_rect(fill = "white", colour = "black")) +
-  scale_fill_manual("Season", values = c("#000000", "#E69F00", "#56B4E9", 
-                               "#009E73", "#F0E442", "#0072B2", 
-                               "#D55E00", "#CC79A7", "#000000", 
-                               "#E69F00"))
+        # Set Panel background fill and border
+        panel.background = element_rect(fill = "white", colour = "black"),
+        panel.grid.major = element_line(colour = "grey"),
+        panel.grid.minor = element_line(colour = "grey", linetype = "dotted")) +
+  # Set colours for bars
+  scale_fill_manual(values = plot_colours_ten)
 print(p)
 dev.off()
 
 
+
+aa <- c("CHANDLER", "JOEY", "MONICA", "PHOEBE", "RACHEL", "ROSS")
+# Cyclic plots for each character - #Dialogues vs Season#
+for(k in 1:length(FRIENDS)) {
+  
+  png(paste0(WorkDir, "plots/Cyclic_Num_Dial_vs_ep_", aa[k],".png"),
+      width = 600, height = 500)
+  p <- ggplot(numdial_wrt_char %>% filter(FRIENDS == aa[k]),
+              aes(x = season, y = dialogues_num, fill = season)) +
+    # Set plot type to Bar plot and adjust width of bars
+    geom_bar(stat = "identity") +
+    # Set plot title and lables for x & y axes
+    labs(title = "Number of Dialogues vs. Season", 
+         x = aa[k], y = "Number of Dialogues") +
+    # Set text for Title, x & y axes labels
+    theme(plot.title = element_text(size = 20, hjust = 0.5), 
+          axis.text = element_text(face = "bold", size = 12),
+          axis.title = element_text(face = "bold", size = 16),
+          # Set Panel background
+          panel.background = element_rect(fill = "white", colour = "black"),
+          panel.grid.major = element_line(colour = "grey"),
+          panel.grid.minor = element_line(colour = "grey", linetype = "dotted")) +
+    # Set colours for bars
+    scale_fill_manual(values = plot_colours_ten) +
+    coord_polar()
+  print(p)
+  dev.off()
+  
+}

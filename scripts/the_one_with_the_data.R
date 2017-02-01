@@ -1,12 +1,14 @@
 ### The One With the Data :D
+rm(list=ls(all=TRUE)) #start with empty workspace
+
 # Load Packages
 load_pacakges <- c("dplyr", "tidyr", "readr", "stringr",
-                   "magrittr", "ggplot2", "rvest", "lubridate", 
-                   "rlist", "caret", "broom", "reshape2")
+                   "magrittr", "ggplot2", "rvest", 
+                   "rlist", "reshape2")
 lapply(load_pacakges, require, character.only = TRUE)
 
 # Set Working Directory
-WorkDir <- "C:/DA/Projects/F.R.I.E.N.D.S/"
+WorkDir <- "C:/Users/lc067/Documents/DA/Projects/F.R.I.E.N.D.S/"
 setwd(dir = paste0(WorkDir, "scripts/"))
 
 # Get the path of transcript files for all episodes
@@ -58,25 +60,15 @@ num_dialogues <- matrix(data = NA,
 # Run `for` loop on each episode to extract and plot data
 for(i in 1:num_episodes) {
   
-  file_url <- all_episodes[i]
-  
-  all_Characters <- file_url %>%
+  Lead_Characters <- all_episodes[i] %>%
     read_html() %>%
     html_nodes(css = 'b, p') %>%
-    html_text()
-  
-  # Define function `cleanlist`
-  cleanlist <- function(x) gsub(pattern = "(.*):.*", 
-                                replacement = "\\1", x = x)
-  
-  all_Characters <- sapply(X = all_Characters,
-                           FUN = cleanlist, USE.NAMES = F) %>% 
+    html_text() %>% 
+    gsub(pattern = "(.*):.*", replacement = "\\1") %>% 
     str_trim() %>% 
     gsub(pattern = "^$", replacement = NA_character_) %>% 
-    toupper()
-  
-  Lead_Characters <-
-    all_Characters[all_Characters %in% FRIENDS]
+    toupper() %>% 
+    extract(. %in% FRIENDS)
   
   # If data is extracted successfully for an episode, enter the 'if' section
   # If not, enter the 'else' section and display warning message
@@ -136,8 +128,6 @@ for(i in 1:num_episodes) {
 
 
 
-
-
 ## Plot `Total #Dialogues` vs. `Episode number` 
 ## summed for all episodes for all Lead Character
 ## Single barplot
@@ -171,6 +161,7 @@ print(p)
 dev.off()
 
 
+                              
 # Convert matrix `num_dialogues` into data.frame and name its columns
 dialogues <- data.frame(1:num_episodes, num_dialogues, 
                         season_num_per_episode, 
@@ -409,19 +400,22 @@ dev.off()
 
 
 
-aa <- c("CHANDLER", "JOEY", "MONICA", "PHOEBE", "RACHEL", "ROSS")
+# Assign Character Vector `FRIENDS` to 
+# a new vector with name other than FRIENDS
+FRIENDS_NEW <- FRIENDS
+
 # Cyclic plots for each character - #Dialogues vs Season#
 for(k in 1:length(FRIENDS)) {
   
-  png(paste0(WorkDir, "plots/Cyclic_Num_Dial_vs_ep_", aa[k],".png"),
+  png(paste0(WorkDir, "plots/Cyclic_Num_Dial_vs_ep_", FRIENDS_NEW[k],".png"),
       width = 600, height = 500)
-  p <- ggplot(numdial_wrt_char %>% filter(FRIENDS == aa[k]),
+  p <- ggplot(numdial_wrt_char %>% filter(FRIENDS == FRIENDS_NEW[k]),
               aes(x = season, y = dialogues_num, fill = season)) +
     # Set plot type to Bar plot and adjust width of bars
     geom_bar(stat = "identity") +
     # Set plot title and lables for x & y axes
     labs(title = "Number of Dialogues vs. Season", 
-         x = aa[k], y = "Number of Dialogues") +
+         x = FRIENDS_NEW[k], y = "Number of Dialogues") +
     # Set text for Title, x & y axes labels
     theme(plot.title = element_text(size = 20, hjust = 0.5), 
           axis.text = element_text(face = "bold", size = 12),

@@ -20,9 +20,7 @@ files_list <- lapply(X = files_path, FUN = list.files)
 episodes_per_season <- lapply(X = files_list, FUN = length) %>% unlist()
 
 season_num_per_episode <- rep(x = season_num,
-                          times = episodes_per_season)
-#season_num_per_episode <- rep(x = paste0("season ", season_num),
-#                              times = episodes_per_season)
+                              times = episodes_per_season)
 
 all_episodes <- mapply(FUN = function(x,y) paste0(x,y),
                        x = files_path, y=files_list) %>% 
@@ -41,13 +39,13 @@ FRIENDS <- c("CHANDLER", "JOEY", "MONICA",
 # Six colours combo is used for versus character plots,
 # as number of Characters are `Six`
 plot_colours_six <- c("#000000", "#E69F00", "#56B4E9",
-                  "#009E73", "#F0E442", "#0072B2")
+                      "#009E73", "#F0E442", "#0072B2")
 # Ten Colours combo is used for versus Season plots,
 # as number of seasons are `Ten`
 plot_colours_ten <- c("#000000", "#E69F00", "#56B4E9", 
-                       "#009E73", "#F0E442", "#0072B2",
-                       "#D55E00", "#CC79A7", "#000000",
-                       "#E69F00")
+                      "#009E73", "#F0E442", "#0072B2",
+                      "#D55E00", "#CC79A7", "#000000",
+                      "#E69F00")
 
 
 # Initialize vector `Lead_Characters_allep`
@@ -83,8 +81,8 @@ for(i in 1:num_episodes) {
                i, "frequency_plot.png"),
         width = 800, height = 500)
     p <- ggplot(data = dial_per_epi, aes(x = FRIENDS, 
-                               y = Number_of_Dialogues,
-                               fill = FRIENDS)) +
+                                         y = Number_of_Dialogues,
+                                         fill = FRIENDS)) +
       # Set plot type to Bar plot and adjust width of bars
       geom_bar(stat = "identity") +
       # Set theme to `minimal`
@@ -116,7 +114,7 @@ for(i in 1:num_episodes) {
                               function(x) 
                                 length(Lead_Characters[Lead_Characters %in% x]))
   
-
+  
   
   # Store the list of all repeated Lead character 
   # names for all episodes in a single character 
@@ -135,7 +133,7 @@ df <- as.data.frame(table(Lead_Characters_allep))
 names(df) <- c("FRIENDS", "Number_of_Dialogues")
 # Set name and dimensions for the plot
 png(paste0(WorkDir,"plots/allep_frequency_plot.png"),
-       width = 800, height = 500)
+    width = 800, height = 500)
 p <- ggplot(data = df,
             aes(x = FRIENDS, y = Number_of_Dialogues, 
                 fill = FRIENDS)) +
@@ -161,7 +159,7 @@ print(p)
 dev.off()
 
 
-                              
+
 # Convert matrix `num_dialogues` into data.frame and name its columns
 dialogues <- data.frame(1:num_episodes, num_dialogues, 
                         season_num_per_episode, 

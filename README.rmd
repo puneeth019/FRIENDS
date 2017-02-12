@@ -9,7 +9,7 @@ F.R.I.E.N.D.S TV series Lead Characters aka *The FRIENDS* are **Chandler, Joey, 
 
 These are some of the the observations by me :
 
-###Rachels speaks the most!
+### Rachels speaks the most!
 
 In the below plot you can see Number of dialogues (**#dialogues**) for all episodes on Y-axis with Lead-Characters on X-axis.
 
@@ -17,7 +17,7 @@ In the below plot you can see Number of dialogues (**#dialogues**) for all episo
 
 Overall #dialogues by all characters are kind of close to each other's, with Rachel delivering the highest *(15,707)* and Phoebe the least*(12,443)*. Chandler*(14,091)*, Joey*(13,865)* & Monica*(14,032)* are in the same league and Rachel & Ross*(15174)* are in the other. I guess you can expect that Phoebe would have the least #dialuges out of all.
 
-###
+### Number of Dialogues in each Season
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 

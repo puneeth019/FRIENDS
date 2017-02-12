@@ -46,6 +46,6 @@ Even from this plot it's clear that Phoebe has the least #dialogues in the serie
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_ROSS.png "Number of Dialogues by Ross vs. Season")
 
 The above plots show clear contribution of characters individually towards each season.
-And even from the above plots it's clear that more work might be needed to extract data from Seasons 1 & 10.
+And even from the above plots it's clear that more work might be needed to extract data from **Seasons 2 & 10**.
 
 

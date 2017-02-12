@@ -13,7 +13,7 @@ Data is scraped from episode **transcipts** which are in the form of `html` file
 
 ## Observations
 
-### Rachels speaks the most!
+### Rachels talks a lot! :P
 
 From the plot below, you can see the Number of dialogues (**#dialogues**) spoken in all **Ten Seasons** by each Lead-Character.
 

@@ -25,6 +25,8 @@ Overall #dialogues by all characters are kind of close to each other's, with Rac
 
    And also it is obvious that something went wrong while extracting data for **Season 2** as #dialogues for this season*(1,416)* are pretty less compared with all other seasons. I have to revisit the scrit again to extract the data properly for this season. And it's also worth to check data extraction script for season 10 as well as #dialogues for this season *(4,392)* doesn't compare well with others.
 
-The plot below tells us who spoke the most in each season.
+**The plot below tells us who spoke the most in each season**.
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Perc_Dial_vs_season.png "Percentage of Dialogues vs. Season")
+
+Even from this plot it can be concluded that Phoebe spoke the least.

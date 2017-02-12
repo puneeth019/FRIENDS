@@ -13,7 +13,7 @@ Data is scraped from episode **transcipts** which are in the form of `html` file
 
 ### Rachels speaks the most!
 
-From the plot below, you can see the Number of dialogues (**#dialogues**) spoken in all **Ten Seasons** by each Lead-Characters.
+From the plot below, you can see the Number of dialogues (**#dialogues**) spoken in all **Ten Seasons** by each Lead-Character.
 
 ![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_character.png "Number of Dialogues vs. character")
 

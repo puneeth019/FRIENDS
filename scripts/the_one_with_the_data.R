@@ -2,13 +2,11 @@
 rm(list=ls(all=TRUE)) #start with empty workspace
 
 # Load Packages
-load_pacakges <- c("dplyr", "tidyr", "readr", "stringr",
-                   "magrittr", "ggplot2", "rvest", 
-                   "rlist", "reshape2")
+load_pacakges <- c("tidyverse", "rvest", "stringr", "magrittr")
 lapply(load_pacakges, require, character.only = TRUE)
 
 # Set Working Directory
-WorkDir <- "C:/Users/lc067/Documents/DA/Projects/F.R.I.E.N.D.S/"
+WorkDir <- "C:/DA/Projects/F.R.I.E.N.D.S/"
 setwd(dir = paste0(WorkDir, "scripts/"))
 
 # Get the path of transcript files for all episodes
@@ -67,6 +65,9 @@ for(i in 1:num_episodes) {
     gsub(pattern = "^$", replacement = NA_character_) %>% 
     toupper() %>% 
     extract(. %in% FRIENDS)
+  
+  aa <-
+    Lead_Characters[Lead_Characters %in% FRIENDS]
   
   # If data is extracted successfully for an episode, enter the 'if' section
   # If not, enter the 'else' section and display warning message

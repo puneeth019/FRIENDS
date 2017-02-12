@@ -1,5 +1,5 @@
 # F.R.I.E.N.D.S
-  ## The One with All the Data :D
+## The One with All the Data :D
 
 https://en.wikipedia.org/wiki/Friends
 
@@ -46,6 +46,6 @@ Even from this plot it's clear that Phoebe spoke the least.
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_ROSS.png "Number of Dialogues by Ross vs. Season")
 
 
-
+Even from the above plots it's clear that more work might be needed to extract data from Seasons 1 & 10.
 
 

@@ -13,11 +13,11 @@ Data is scraped from episode **transcipts** which are in the form of `html` file
 
 ### Rachels speaks the most!
 
-In the below plot you can see Number of dialogues (**#dialogues**) for all episodes on Y-axis with Lead-Characters on X-axis.
+In the below plot you can see Number of dialogues (**#dialogues**) spoken in all **Ten Seasons** by  each Lead-Characters.
 
 ![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_character.png "Number of Dialogues vs. character")
 
-Overall #dialogues by all characters are kind of close to each other's, with Rachel delivering the highest *(15,707)* and Phoebe the least*(12,443)*. Chandler*(14,091)*, Joey*(13,865)* & Monica*(14,032)* are in the same league and Rachel & Ross*(15174)* are in the other. I guess you can expect that Phoebe would have the least #dialuges out of all.
+Overall **#dialogues** by all characters are kind of close to each other's, with **Rachel** delivering the highest *(15,707)* and **Phoebe** the least*(12,443)*. **Chandler***(14,091)*, **Joey***(13,865)* & **Monica***(14,032)* are in the same league and **Rachel*8 & **Ross***(15174)* are in the other. I guess you can expect that **Phoebe** has the least *#dialogues*.
 
 ### Number of Dialogues in each Season
 

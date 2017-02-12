@@ -27,7 +27,7 @@ Overall the writers maintained **#dialogues** by all characters to be close to e
 
    **Season 6** has the *highest* **#dialogues***(10,897)* out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same **#dialogues**. Maybe the writers tended to create more contect toward the middle of the series.
 
-   And also it is obvious that something went wrong while extracting data for **Season 2** as **#dialogues** for this season*(1,416)* are pretty less compared with the rest. I have to revisit the scrit again to extract the data properly for this season. And it's also worth to check data extraction for **Season 10** as well as **#dialogues** for this season *(4,392)* doesn't compare well with the others.
+   And also it is obvious that something went wrong while extracting data for **Season 2** as **#dialogues** for this season*(1,416)* are pretty less compared with the rest. I have to revisit the [scrit](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R) to get accurate data for this season. And it's also worth to check data extraction for **Season 10** as well as **#dialogues** for this season *(4,392)* doesn't compare well with the others.
 
 **The plot below tells us who spoke the most in each season**.
 

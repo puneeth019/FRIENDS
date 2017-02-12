@@ -1,11 +1,14 @@
 # F.R.I.E.N.D.S
 ## The One with All the Data :D
 
-https://en.wikipedia.org/wiki/Friends
+The idea is to analyze and understand the contribution of all characters in [F.R.I.E.N.D.S TV series (1994-2004) (https://en.wikipedia.org/wiki/Friends) in detail.
 
-The idea is to analyze and understand F.R.I.E.N.D.S TV series(1994-2004) in detail using transcripts from http://www.friendstranscripts.tk/.
 
 F.R.I.E.N.D.S TV series Lead Characters aka *The FRIENDS* are **Chandler, Joey, Monica, Phoebe, Rachel and Ross**.
+
+### Some notes on data scraping
+
+Data is scraped from episode **transcipts** which are in the form of `html` files. These transcripts can be downloaded from here or here http://www.friendstranscripts.tk/.
 
 These are some of the the observations by me :
 

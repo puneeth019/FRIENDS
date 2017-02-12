@@ -5,14 +5,15 @@ https://en.wikipedia.org/wiki/Friends
 
 The idea is to analyze and understand F.R.I.E.N.D.S TV series(1994-2004) in detail using transcripts from http://www.friendstranscripts.tk/.
 
+F.R.I.E.N.D.S TV series Lead Characters aka *The FRIENDS* are **Chandler, Joey, Monica, Phoebe, Rachel and Ross**.
 
 These are some of the the observations by me :
 
 ###Rachels speaks the most!
 
-In the below plot you can see #dialogues on Y-axis with FRIENDS Lead-Characters on X-axis.
+In the below plot you can see Number of dialogues (#dialogues) for all episodes on Y-axis with Lead-Characters on X-axis.
 
 ![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_character.png "#Dialogues vs. character")
 
-Overall #dialogues by all characters are kind of close to each other, with Rachel delivering the highest (15707) and Phoebe the least(12443). Chandler(14091), Joey(13865) & Monica(14032) are in the same league and Rachel & Ross(15174) are in the other. I guess you can expect that phoebe would have the least #dialuges out of all.
+Overall #dialogues by all characters are kind of close to each other's, with Rachel delivering the highest (15,707) and Phoebe the least(12,443). Chandler(14,091), Joey(13,865) & Monica(14,032) are in the same league and Rachel & Ross(15174) are in the other. I guess you can expect that Phoebe would have the least #dialuges out of all.
 

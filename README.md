@@ -9,7 +9,7 @@ Lead Characters/*The FRIENDS* in this series are **Chandler, Joey, Monica, Phoeb
 
 Data is scraped from episode **transcipts** which are in the form of `html` files. These transcripts can be downloaded originally from [here](http://www.friendstranscripts.tk/) or from my [repo](https://github.com/puneeth019/F.R.I.E.N.D.S/tree/master/transcripts).
 
-**R** code to extract data and create plots is [here](https://github.com/puneeth019/F.R.I.E.N.D.S/tree/master/scripts).
+**R** code to extract data and create plots is [here](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R).
 
 ## Observations
 

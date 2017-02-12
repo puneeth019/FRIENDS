@@ -21,7 +21,7 @@ Overall #dialogues by all characters are kind of close to each other's, with Rac
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 
-   **Season 6** has the *highest* #dialogues (10,897) out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same #number of dialogues. Maybe the writers tended to create more contect toward the middle of the series.
+   **Season 6** has the *highest* #dialogues (10,897) out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same #dialogues. Maybe the writers tended to create more contect toward the middle of the series.
 
    And also it is obvious that something went wrong while extracting data for **Season 2** as #dialogues for this season*(1,416)* are pretty less compared with all other seasons. I have to revisit the scrit again to extract the data properly for this season. And it's also worth to check data extraction script for season 10 as well as #dialogues for this season *(4,392)* doesn't compare well with others.
 
@@ -29,4 +29,4 @@ Overall #dialogues by all characters are kind of close to each other's, with Rac
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Perc_Dial_vs_season.png "Percentage of Dialogues vs. Season")
 
-Even from this plot it can be concluded that Phoebe spoke the least.
+Even from this plot it's clear that Phoebe spoke the least.

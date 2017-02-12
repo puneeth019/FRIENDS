@@ -11,9 +11,17 @@ These are some of the the observations by me :
 
 ###Rachels speaks the most!
 
-In the below plot you can see Number of dialogues (#dialogues) for all episodes on Y-axis with Lead-Characters on X-axis.
+In the below plot you can see Number of dialogues (**#dialogues**) for all episodes on Y-axis with Lead-Characters on X-axis.
 
-![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_character.png "#Dialogues vs. character")
+![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_character.png "Number of Dialogues vs. character")
 
-Overall #dialogues by all characters are kind of close to each other's, with Rachel delivering the highest (15,707) and Phoebe the least(12,443). Chandler(14,091), Joey(13,865) & Monica(14,032) are in the same league and Rachel & Ross(15174) are in the other. I guess you can expect that Phoebe would have the least #dialuges out of all.
+Overall #dialogues by all characters are kind of close to each other's, with Rachel delivering the highest *(15,707)* and Phoebe the least*(12,443)*. Chandler*(14,091)*, Joey*(13,865)* & Monica*(14,032)* are in the same league and Rachel & Ross*(15174)* are in the other. I guess you can expect that Phoebe would have the least #dialuges out of all.
+
+###
+
+![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_season.png "Number of Dialogues vs. Season")
+
+    **Season 6** has the *highest* #dialogues (10,897) out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same #number of dialogues. Maybe the writers tended to create more contect toward the middle of the series.
+
+And also it is obvious that something went wrong while extracting data for **Season 2** as #dialogues for this season*(1,416)* are pretty less compared with all other seasons. I have to revisit the scrit again to extract the data properly for this season. And it's also worth to check data extraction script for season 10 as well as #dialogues for this season *(4,392)* doesn't compare well with others.
 

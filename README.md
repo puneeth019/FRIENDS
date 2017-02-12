@@ -17,7 +17,7 @@ From the plot below, you can see the Number of dialogues (**#dialogues**) spoken
 
 ![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_character.png "Number of Dialogues vs. character")
 
-Overall the writers maintained **#dialogues** by all characters to be close to each other's, with **Rachel** delivering the highest *(15,707)* and **Phoebe** the least*(12,443)*. **Chandler***(14,091)*, **Joey***(13,865)* & **Monica***(14,032)* are in the same league and **Rachel*8 & **Ross***(15174)* are in the other. I guess you can expect that **Phoebe** has the least *#dialogues*.
+Overall the writers maintained **#dialogues** by all characters to be close to each other's, with **Rachel** delivering the highest *(15,707)* and **Phoebe** the least*(12,443)*. **Chandler***(14,091)*, **Joey***(13,865)* & **Monica***(14,032)* are in the same league and **Rachel** & **Ross***(15174)* are in the other. I guess you can expect that **Phoebe** has the least *#dialogues*.
 
 ### Number of Dialogues in each Season
 

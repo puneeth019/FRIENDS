@@ -48,7 +48,7 @@ And also it is obvious that something went wrong while extracting data for **Sea
 
 From the plot below, you can see the **Percentage** of dialogues spoken by each characer in each Season.
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Perc_Dial_vs_season.png "Percentage of Dialogues vs. Season")
+![alt_text](/plots/Perc_Dial_vs_season.png "Percentage of Dialogues vs. Season")
 
 Even from this plot it's clear that Phoebe has the least **#dialogues** in the series.
 

@@ -35,7 +35,7 @@ From the plot below, you can see the **Percentage** of dialogues spoken by each 
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Perc_Dial_vs_season.png "Percentage of Dialogues vs. Season")
 
-Even from this plot it's clear that Phoebe has the least #dialogues in the series.
+Even from this plot it's clear that Phoebe has the least **#dialogues** in the series.
 
 ### Number of Dialogues by each Character in each season
 

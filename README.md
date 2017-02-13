@@ -23,6 +23,8 @@ Overall the writers maintained **#dialogues** by all characters to be close to e
 
 ### Number of Dialogues in each Season
 
+From the plot below, you can see the Percentage of dialogues spoken by each characer in each Season.
+
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 
    **Season 6** has the *highest* **#dialogues***(10,897)* out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same **#dialogues**. Maybe the writers tended to create more content toward the middle of the series.

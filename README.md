@@ -32,7 +32,7 @@ Once you extract and `tidy` the data, it looks like this...
 
 From the plot below, you can see the Number of dialogues(**#dialogues**) spoken in all **Ten Seasons** by each Lead-Character.
 
-![alt text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Num_Dial_vs_character.png "Number of Dialogues vs. character")
+![alt text](/plots/Num_Dial_vs_character.png "Number of Dialogues vs. character")
 
 Overall, the writers maintained **#dialogues** by all characters to be close to each other's, with **Rachel** delivering the highest *(15,707)* and **Phoebe** the least*(12,443)*. **Chandler***(14,091)*, **Joey***(13,865)* & **Monica***(14,032)* are in the same league and **Rachel** & **Ross***(15174)* are in the other. I guess you can expect that **#dialogues** for **Phoebe** are the least, she is not the least favourite character though! :)
 
@@ -40,7 +40,7 @@ Overall, the writers maintained **#dialogues** by all characters to be close to 
 
 **Season 6** has the *highest* **#dialogues***(10,897)* out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same **#dialogues**. Maybe the writers tended to create more content toward the middle of the series.
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Num_Dial_vs_season.png "Number of Dialogues vs. Season")
+![alt_text](/plots/Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 
 And also it is obvious that something went wrong while extracting data for **Season 2** as **#dialogues** for this season*(1,416)* are pretty less compared with the rest. I have to revisit the [script](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R), to get accurate data for this season. And it's also worth to check data extraction for **Season 10** as well, as **#dialogues** for this season *(4,392)* doesn't compare well with the others.
 
@@ -54,17 +54,17 @@ Even from this plot it's clear that Phoebe has the least **#dialogues** in the s
 
 ### Number of Dialogues by each Character in each season
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_CHANDLER.png "Number of Dialogues by Chandler vs. Season") 
+![alt_text](/plots/Cyclic_Num_Dial_vs_ep_CHANDLER.png "Number of Dialogues by Chandler vs. Season") 
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_JOEY.png "Number of Dialogues by Joey vs. Season")
+![alt_text](/plots/Cyclic_Num_Dial_vs_ep_JOEY.png "Number of Dialogues by Joey vs. Season")
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_MONICA.png "Number of Dialogues by Monica vs. Season")
+![alt_text](/plots/Cyclic_Num_Dial_vs_ep_MONICA.png "Number of Dialogues by Monica vs. Season")
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_PHOEBE.png "Number of Dialogues by Phoebe vs. Season")
+![alt_text](/plots/Cyclic_Num_Dial_vs_ep_PHOEBE.png "Number of Dialogues by Phoebe vs. Season")
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_RACHEL.png "Number of Dialogues by Rachel vs. Season")
+![alt_text](/plots/Cyclic_Num_Dial_vs_ep_RACHEL.png "Number of Dialogues by Rachel vs. Season")
 
-![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_ROSS.png "Number of Dialogues by Ross vs. Season")
+![alt_text](/plots/Cyclic_Num_Dial_vs_ep_ROSS.png "Number of Dialogues by Ross vs. Season")
 
 The above plots show clear contribution of all the Lead-Characters **individually** towards each season.
 And even from these plots, it's clear that more work might be needed to extract data from **Seasons 2 & 10**.

@@ -5,9 +5,9 @@ The idea is to analyze and understand the contribution of all the Lead Character
 
 Lead Characters/**The FRIENDS** in this TV series are **Chandler, Joey, Monica, Phoebe, Rachel** and **Ross**.
 
-### Some notes on data scraping
+## Some notes on data scraping
 
-Data is scraped from episode **transcipts** which are in the form of `html` files. These transcripts can be downloaded originally from [here](http://www.friendstranscripts.tk/) or from [my repo](https://github.com/puneeth019/F.R.I.E.N.D.S/tree/master/transcripts).
+Data is scraped from episode **transcipts** `html` files. These transcripts can be downloaded originally from [here](http://www.friendstranscripts.tk/) or from [my GitHub repo](https://github.com/puneeth019/F.R.I.E.N.D.S/tree/master/transcripts).
 
 **R** code to extract data and create plots is [here](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R).
 

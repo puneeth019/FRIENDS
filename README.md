@@ -21,7 +21,7 @@ From the plot below, you can see the Number of dialogues(**#dialogues**) spoken 
 
 Overall the writers maintained **#dialogues** by all characters to be close to each other's, with **Rachel** delivering the highest *(15,707)* and **Phoebe** the least*(12,443)*. **Chandler***(14,091)*, **Joey***(13,865)* & **Monica***(14,032)* are in the same league and **Rachel** & **Ross***(15174)* are in the other. I guess you can expect that **#dialogues** for **Phoebe** are the least, she is not the least favourite character though! :)
 
-### Number of Dialogues in each Season
+### Number of Dialogues versus Season
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/%23Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 

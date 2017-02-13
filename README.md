@@ -11,6 +11,19 @@ Data is scraped from episode **transcipts** `html` files. These transcripts can 
 
 **R** code to extract data and create plots is [here](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R).
 
+Once you extract and compile the data, it looks like this...
+
+```
+> head(dialogues)
+  Episode_Number CHANDLER JOEY MONICA PHOEBE RACHEL ROSS season
+1              1       76   80    141     38     94   94     01
+2              2       32   17     56     28     75  126     01
+3              3       72   56    103     76     52   66     01
+4              4       64   47     94     62     86   78     01
+5              5       70   72     66     46     74   80     01
+6              6      115   60     68     20     30   43     01
+```
+
 ## Observations
 
 ### Rachels talks a lot! :P

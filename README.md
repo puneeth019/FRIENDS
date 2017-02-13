@@ -1,4 +1,4 @@
-![alt_text](https://en.wikipedia.org/wiki/File:Friends_logo.svg "FRIENDS") 
+![alt_text](https://upload.wikimedia.org/wikipedia/commons/b/bc/Friends_logo.svg "FRIENDS") 
 
 # The.One.with.the.Data!
 

@@ -1,4 +1,3 @@
-### The One With the Data :D
 rm(list=ls(all=TRUE)) #start with empty workspace
 
 # Load Packages
@@ -66,9 +65,6 @@ for(i in 1:num_episodes) {
     toupper() %>% 
     extract(. %in% FRIENDS)
   
-  aa <-
-    Lead_Characters[Lead_Characters %in% FRIENDS]
-  
   # If data is extracted successfully for an episode, enter the 'if' section
   # If not, enter the 'else' section and display warning message
   if(sum(!is.na(x = Lead_Characters)) != 0) {
@@ -133,7 +129,6 @@ names(Lead_Characters_allep) <- c("FRIENDS", "Number_of_Dialogues")
 
 
 
-
 ## Plot `Total #Dialogues` vs. `Episode number` 
 ## summed for all episodes for all Lead Character
 ## Single barplot
@@ -185,7 +180,7 @@ write.csv(x = dialogues,
 for(j in 1:length(FRIENDS)){
   
   # Set name and dimensions for the plot
-  png(paste0(WorkDir, "plots/#Dialogues_vs_ep_", FRIENDS[j],".png"),
+  png(paste0(WorkDir, "plots/Dialogues_vs_ep_", FRIENDS[j],".png"),
       width = 800, height = 500)
   setwd(dir = paste0(WorkDir, "plots/"))
   p <- ggplot(data = dialogues,
@@ -223,7 +218,7 @@ dialogues_long <- gather(data = dialogues,
 ## six Lead characters in the same plot, unlike above plot
 # Set name and dimensions for the plot
 png(paste0(WorkDir, 
-           "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
+           "plots/Dialogues_vs_ep_allfriends_lineplot.png"),
     width = 800, height = 500)
 setwd(dir = paste0(WorkDir, "plots/"))
 ## Six line plots in a single Chart
@@ -252,7 +247,7 @@ dev.off()
 ## vs. Episode number for all Lead Characters
 # Set name and dimensions for the plot
 png(paste0(WorkDir, 
-           "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
+           "plots/Dialogues_vs_ep_allfriends_barplot.png"),
     width = 800, height = 500)
 setwd(dir = paste0(WorkDir, "plots/"))
 ## Stacked Barplot
@@ -287,7 +282,7 @@ numdial_wrt_season <- dialogues %>%
   ungroup
 
 # Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Num_Dial_vs_season.png"),
+png(paste0(WorkDir, "plots/Num_Dial_vs_season.png"),
     width = 800, height = 500)
 setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = numdial_wrt_season, 
@@ -319,7 +314,7 @@ percdial_wrt_season <- numdial_wrt_season %>%
   ungroup
 
 # Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Perc_Dial_vs_season.png"),
+png(paste0(WorkDir, "plots/Perc_Dial_vs_season.png"),
     width = 900, height = 500)
 setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = percdial_wrt_season, 
@@ -357,7 +352,7 @@ numdial_wrt_char <- dialogues %>%
   ungroup
 
 # Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Num_Dial_vs_character.png"),
+png(paste0(WorkDir, "plots/Num_Dial_vs_character.png"),
     width = 900, height = 500)
 setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = numdial_wrt_char, 
@@ -391,7 +386,7 @@ percdial_wrt_char <- numdial_wrt_char %>%
   ungroup
 
 # Set name and dimensions for the plot
-png(paste0(WorkDir, "plots/#Perc_Dial_vs_character.png"),
+png(paste0(WorkDir, "plots/Perc_Dial_vs_character.png"),
     width = 900, height = 500)
 setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = percdial_wrt_char, 

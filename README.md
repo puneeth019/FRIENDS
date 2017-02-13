@@ -11,7 +11,7 @@ Data is scraped from episode **transcipts** `html` files. These transcripts can 
 
 **R** code to extract data and create plots is [here](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R).
 
-Once you extract and compile the data, it looks like this...
+Once you extract and `tidy` the data, it looks like this...
 
 ```
 > head(dialogues)

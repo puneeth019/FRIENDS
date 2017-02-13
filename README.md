@@ -1,4 +1,4 @@
-## The One with the Data! :D
+## The.One.with.the.Data. :D
 
 The idea is to analyze and understand the contribution of all the Lead Characters of [F.R.I.E.N.D.S TV series (1994-2004)](https://en.wikipedia.org/wiki/Friends) in-terms of number of dialogues spoken by them.
 

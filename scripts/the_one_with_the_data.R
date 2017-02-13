@@ -81,6 +81,7 @@ for(i in 1:num_episodes) {
     png(paste0(WorkDir,"plots/episode",
                i, "frequency_plot.png"),
         width = 800, height = 500)
+    setwd(dir = paste0(WorkDir, "plots/"))
     p <- ggplot(data = dial_per_epi, aes(x = FRIENDS, 
                                          y = Number_of_Dialogues,
                                          fill = FRIENDS)) +
@@ -125,17 +126,23 @@ for(i in 1:num_episodes) {
   
 }
 
+## Convert `Lead_Characters_allep` into `data.frame`
+## and name its columns
+Lead_Characters_allep <- as.data.frame(table(Lead_Characters_allep))
+names(Lead_Characters_allep) <- c("FRIENDS", "Number_of_Dialogues")
+
+
 
 
 ## Plot `Total #Dialogues` vs. `Episode number` 
 ## summed for all episodes for all Lead Character
 ## Single barplot
-df <- as.data.frame(table(Lead_Characters_allep))
-names(df) <- c("FRIENDS", "Number_of_Dialogues")
+
 # Set name and dimensions for the plot
 png(paste0(WorkDir,"plots/allep_frequency_plot.png"),
     width = 800, height = 500)
-p <- ggplot(data = df,
+setwd(dir = paste0(WorkDir, "plots/"))
+p <- ggplot(data = Lead_Characters_allep,
             aes(x = FRIENDS, y = Number_of_Dialogues, 
                 fill = FRIENDS)) +
   # Set plot type to Bar plot and adjust width of bars
@@ -166,6 +173,9 @@ dialogues <- data.frame(1:num_episodes, num_dialogues,
                         season_num_per_episode, 
                         stringsAsFactors = F)
 names(dialogues) <- c("Episode_Number", FRIENDS, "season")
+setwd(dir = paste0(WorkDir, "data/"))
+write.csv(x = dialogues,
+          file = 'dialogues.csv')
 
 
 
@@ -177,6 +187,7 @@ for(j in 1:length(FRIENDS)){
   # Set name and dimensions for the plot
   png(paste0(WorkDir, "plots/#Dialogues_vs_ep_", FRIENDS[j],".png"),
       width = 800, height = 500)
+  setwd(dir = paste0(WorkDir, "plots/"))
   p <- ggplot(data = dialogues,
               aes(x = Episode_Number, y = dialogues[,j+1])) +
     # Set plot type to line plot
@@ -214,6 +225,7 @@ dialogues_long <- gather(data = dialogues,
 png(paste0(WorkDir, 
            "plots/#Dialogues_vs_ep_allfriends_lineplot.png"),
     width = 800, height = 500)
+setwd(dir = paste0(WorkDir, "plots/"))
 ## Six line plots in a single Chart
 p <- ggplot(data = dialogues_long, aes(x = Episode_Number, 
                                        y = dialogues_num, 
@@ -242,6 +254,7 @@ dev.off()
 png(paste0(WorkDir, 
            "plots/#Dialogues_vs_ep_allfriends_barplot.png"),
     width = 800, height = 500)
+setwd(dir = paste0(WorkDir, "plots/"))
 ## Stacked Barplot
 p <- ggplot(data = dialogues_long, aes(x = Episode_Number, 
                                        y = dialogues_num, 
@@ -276,6 +289,7 @@ numdial_wrt_season <- dialogues %>%
 # Set name and dimensions for the plot
 png(paste0(WorkDir, "plots/#Num_Dial_vs_season.png"),
     width = 800, height = 500)
+setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = numdial_wrt_season, 
             aes(x = season, y = dialogues_num, fill = FRIENDS)) +
   # Set plot type to Bar plot
@@ -307,6 +321,7 @@ percdial_wrt_season <- numdial_wrt_season %>%
 # Set name and dimensions for the plot
 png(paste0(WorkDir, "plots/#Perc_Dial_vs_season.png"),
     width = 900, height = 500)
+setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = percdial_wrt_season, 
             aes(x = season, y = perc, fill = FRIENDS)) +
   # Set plot type to Bar plot
@@ -344,6 +359,7 @@ numdial_wrt_char <- dialogues %>%
 # Set name and dimensions for the plot
 png(paste0(WorkDir, "plots/#Num_Dial_vs_character.png"),
     width = 900, height = 500)
+setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = numdial_wrt_char, 
             aes(x = FRIENDS, y = dialogues_num, fill = season)) +
   # Set plot type to Bar plot and adjust width of bars
@@ -377,6 +393,7 @@ percdial_wrt_char <- numdial_wrt_char %>%
 # Set name and dimensions for the plot
 png(paste0(WorkDir, "plots/#Perc_Dial_vs_character.png"),
     width = 900, height = 500)
+setwd(dir = paste0(WorkDir, "plots/"))
 p <- ggplot(data = percdial_wrt_char, 
             aes(x = FRIENDS, y = perc, fill = season)) +
   # Set plot type to Bar plot and adjust width of bars
@@ -408,6 +425,7 @@ for(k in 1:length(FRIENDS)) {
   
   png(paste0(WorkDir, "plots/Cyclic_Num_Dial_vs_ep_", FRIENDS_NEW[k],".png"),
       width = 600, height = 500)
+  setwd(dir = paste0(WorkDir, "plots/"))
   p <- ggplot(numdial_wrt_char %>% filter(FRIENDS == FRIENDS_NEW[k]),
               aes(x = season, y = dialogues_num, fill = season)) +
     # Set plot type to Bar plot and adjust width of bars

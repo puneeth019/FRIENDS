@@ -29,7 +29,7 @@ Overall the writers maintained **#dialogues** by all characters to be close to e
 
    And also it is obvious that something went wrong while extracting data for **Season 2** as **#dialogues** for this season*(1,416)* are pretty less compared with the rest. I have to revisit the [script](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R), to get accurate data for this season. And it's also worth to check data extraction for **Season 10** as well, as **#dialogues** for this season *(4,392)* doesn't compare well with the others.
 
-### The plot below tells us who spoke the most in each season
+### *Percentage* of Dialogues versus Season
 
 From the plot below, you can see the **Percentage** of dialogues spoken by each characer in each Season.
 
@@ -51,5 +51,5 @@ Even from this plot it's clear that Phoebe has the least **#dialogues** in the s
 
 ![alt_text](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/plots/Cyclic_Num_Dial_vs_ep_ROSS.png "Number of Dialogues by Ross vs. Season")
 
-The above plots show clear contribution of all the Lead-Characters individually towards each season.
+The above plots show clear contribution of all the Lead-Characters **individually** towards each season.
 And even from these plots, it's clear that more work might be needed to extract data from **Seasons 2 & 10**.

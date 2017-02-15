@@ -16,14 +16,21 @@ Data is scraped from episode **transcipts** `html` files. These transcripts can 
 Once you extract and `tidy` the data, it looks like this...
 
 ```
-> head(dialogues)
-  Episode_Number CHANDLER JOEY MONICA PHOEBE RACHEL ROSS season
-1              1       76   80    141     38     94   94     01
-2              2       32   17     56     28     75  126     01
-3              3       72   56    103     76     52   66     01
-4              4       64   47     94     62     86   78     01
-5              5       70   72     66     46     74   80     01
-6              6      115   60     68     20     30   43     01
+> dialogues
+# A tibble: 227 × 8
+   Episode_Number CHANDLER  JOEY MONICA PHOEBE RACHEL  ROSS season
+            <int>    <int> <int>  <int>  <int>  <int> <int>  <chr>
+1               1       76    80    141     38     94    94     01
+2               2       32    17     56     28     75   126     01
+3               3       72    56    103     76     52    66     01
+4               4       64    47     94     62     86    78     01
+5               5       70    72     66     46     74    80     01
+6               6      115    60     68     20     30    43     01
+7               7       49    54     46     49     86   106     01
+8               8       74    22     68     32     36    96     01
+9               9       52    64     96     40     70    71     01
+10             10       61    38     46     97     36    58     01
+# ... with 217 more rows
 ```
 
 ## Observations

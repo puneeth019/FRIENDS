@@ -2,7 +2,7 @@ rm(list=ls(all=TRUE)) #start with empty workspace
 
 # Load Packages
 load_pacakges <- c("tidyverse", "rvest", "stringr", "magrittr")
-lapply(load_pacakges, require, character.only = TRUE)
+lapply(load_pacakges, library, character.only = TRUE)
 
 # Set Working Directory
 WorkDir <- "C:/DA/Projects/F.R.I.E.N.D.S/"

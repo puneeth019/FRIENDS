@@ -1,1 +1,1 @@
-Transcripts can be downloaded from --> http://www.friendstranscripts.tk/
+These are transcripts for all 10 seasons.

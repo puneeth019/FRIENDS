@@ -45,7 +45,7 @@ Overall, the writers maintained **#dialogues** by all characters to be close to 
 
 ### *Number* of Dialogues versus Season
 
-**Season 6** has the *highest* **#dialogues***(10,897)* out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same **#dialogues**. Maybe the writers tended to create more content toward the middle of the series.
+**Season 6** has the *highest* **#dialogues***(10,897)* out of all Ten seasons. And season 5 *(10,738)*, season 6 & season 7*(10,798)* have almost same **#dialogues**. Maybe the writers created relatively more content towards middle of the series.
 
 ![alt_text](plots/Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 

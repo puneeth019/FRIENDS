@@ -49,7 +49,7 @@ Overall, the writers maintained **#dialogues** by all characters to be close to 
 
 ![alt_text](plots/Num_Dial_vs_season.png "Number of Dialogues vs. Season")
 
-And also it is obvious that something went wrong while extracting data for **Season 2** as **#dialogues** for this season*(1,416)* are pretty less compared with the rest. I have to revisit the [script](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R), to get accurate data for this season. And it's also worth to check data extraction for **Season 10** as well, as **#dialogues** for this season *(4,392)* doesn't compare well with the others.
+And also it is obvious that something went wrong while extracting data for **Season 2** as **#dialogues** for this season*(1,416)* are pretty less compared with the rest. The [script](https://github.com/puneeth019/F.R.I.E.N.D.S/blob/master/scripts/the_one_with_the_data.R) has to be modified to extract accurate data for this season. And it's also worth to check the same for **Season 10** as well, because **#dialogues** for this season *(4,392)* doesn't compare well with the others.
 
 ### *Percentage* of Dialogues versus Season
 

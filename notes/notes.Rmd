@@ -1,5 +1,5 @@
 Data Journalism on F.R.I.E.N.D.S TV Series (1994 – 2004)
-Notes by Puneeth Gandla – last updated on 28th October 2016
+Notes by Puneeth Gandla – last updated on 18th May 2017
 
 1. Plot ‘Episode #’ on X axis & ‘#Dialogues on Y-axis’ for all actors as line plots
 2. Central Characters 

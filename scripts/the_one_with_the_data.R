@@ -5,7 +5,7 @@ load_pacakges <- c("tidyverse", "rvest", "stringr", "magrittr")
 lapply(load_pacakges, library, character.only = TRUE)
 
 # Set Working Directory
-WorkDir <- "C:/DA/Projects/F.R.I.E.N.D.S/"
+WorkDir <- "F.R.I.E.N.D.S/"
 setwd(dir = paste0(WorkDir, "scripts/"))
 
 # Get the path of transcript files for all episodes
